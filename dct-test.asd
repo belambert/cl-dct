@@ -1,18 +1,18 @@
 ;; -*- Mode: Lisp -*- 
 
-(asdf:defsystem "edit-distance-test"
-  :name "edit-distance-test"
-  :description "Computing edit distance between sequences."
+(asdf:defsystem "dct-test"
+  :name "dct-test"
+  :description "Discrete cosine transform tests."
   :version "1.0.0"
   :author "Ben Lambert <belambert@mac.com>"
-  :license "CC-BY-4.0"
+  :license "Apache-2.0"
   :serial t
   :components
   ((:module src
     :serial t
     :components
     ((:file "test"))))
-  :depends-on ("edit-distance"
+  :depends-on ("dct"
 	       "lisp-unit"
 	       ;; cl-coverage is failing without these
 	       "trivial-features"

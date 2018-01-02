@@ -5,7 +5,7 @@
   :description "Discrete cosine transform.."
   :version "1.0.0"
   :author "Ben Lambert <belambert@mac.com>"
-  :license "Apache-4.0"
+  :license "Apache-2.0"
   :serial t
   :components
   ((:module src
