@@ -14,25 +14,30 @@
 
 (in-package :dct)
 
-(defun dct-ii (array &optional truncated)
+;; Also see this doc: https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.dct.html
+
+
+;; This is what MATLAB 'dct' does, and what scipy.fftpack.dct([4., 3., 5., 10.], type=2, norm='ortho') gives
+(defun dct-ii (array &key truncated)
   "Discrete cosine transform (DCT). 
    DCT-II taken from:
    http://en.wikipedia.org/wiki/Discrete_cosine_transform#DCT-II
-   Further multipling the X0 term by 1/√2 and multiply the resulting matrix by an overall scale factor of √(2/N)"
+   Further multiplied the X0 term by 1/√2 and multiply the resulting matrix by an overall scale factor of √(2/N)  ...(?)"
   (declare (sb-ext:muffle-conditions sb-ext:compiler-note))
   (alexandria:coercef array 'vector)
   (let* ((N (length array))
 	 (transformed (make-array N :element-type 'single-float :initial-element 0.0)))
     (dotimes (k (if truncated truncated N)) ;; only run this loop 'truncated' times if we're going to truncate the result anyway.
       (let ((X_k 0.0)
+	    ;; The 'norm' relation is largely(?) due to this scaling factor?
 	    (w_k (if (= k 0)
 		     (/ 1.0 (sqrt N))
 		     (sqrt (/ 2.0 N)))))
 	(loop for little-n from 0 below N
 	   for x_n across array
 	   for cos-term = (cos (* (/ pi N)
-				  (+ little-n 0.5)
-				  k)) do
+	   			  (+ little-n 0.5)
+	   			  k)) do
 	     (incf X_k (* x_n cos-term)))
 	(setf X_k (* X_k w_k))
 	(alexandria:coercef X_k 'single-float)
@@ -76,6 +81,9 @@
 	 (dct-iii (dct-iii array)))
     (map-into dct-iii (lambda (x) (* x multiplier)) dct-iii)))
 
+
+;; This might be true:
+;; For a single dimension array x, scipz.idct(x, norm='ortho') is equal to MATLAB idct(x).
 (defun idct-matlab (array)
   "Adapted from: http://www.mathworks.com/help/toolbox/signal/ref/idct.html"
   (alexandria:coercef array 'vector)

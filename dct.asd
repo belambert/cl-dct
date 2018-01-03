@@ -2,7 +2,7 @@
 
 (asdf:defsystem "dct"
   :name "dct"
-  :description "Discrete cosine transform.."
+  :description "Discrete cosine transform."
   :version "1.0.0"
   :author "Ben Lambert <belambert@mac.com>"
   :license "Apache-2.0"
