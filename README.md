@@ -11,12 +11,6 @@ DCT. This implementation mimics the one in Matlab. You should also get
 the same results in scipy with the command:
 
 ```python
-scipy.fftpack.dct([4., 3., 5., 10.], type=2, norm='ortho')
-```
-
-or just the equivalent:
-
-```python
 scipy.fftpack.dct([4., 3., 5., 10.], norm='ortho')
 ```
 

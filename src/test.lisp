@@ -12,8 +12,7 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-
-;; To run these tests: (lisp-unit:run-tests :all :dct-tests)
+;; To run these tests: (lisp-unit:run-tests :all :dct-test)
 
 (defpackage :dct-test
   (:use :common-lisp
@@ -24,7 +23,6 @@
 
 (in-package :dct-test)
 
-;; (define-test test-distance-fast
-;;     (let ((result (distance '(1 2 3) '(1 2 4))))
-;;       (assert-equal 1 result)))
-
+(define-test test-dct-basic
+    (let ((result (dct #(4 3 5 10))))
+      (assert-true (equalp #(11.0 -4.460885 3.0 -0.31702533) result))))
