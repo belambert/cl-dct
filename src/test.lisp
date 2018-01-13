@@ -24,5 +24,47 @@
 (in-package :dct-test)
 
 (define-test test-dct-basic
-    (let ((result (dct #(4 3 5 10))))
-      (assert-true (equalp #(11.0 -4.460885 3.0 -0.31702533) result))))
+
+  (assert-true (equalp
+		(dct #(4 3 5 10))
+		#(11.0 -4.460885 3.0 -0.31702533)))
+
+  (assert-true (equalp
+		(idct #(11.0 -4.460885 3.0 -0.31702533))
+		#(4 3 5 10)))
+
+  (assert-true (equalp
+		(dct #(0 0 0 0))
+		#(0 0 0 0)))
+
+  (assert-true (equalp
+		(idct #(0 0 0 0))
+		#(0 0 0 0)))
+
+  (assert-true (equalp
+		(dct #(1 1 1 1))
+		#(2.0 7.850462e-17 -7.850462e-17 -1.5700924e-16)))  ;; should be [ 2.,  0.,  0.,  0.]?
+
+  (assert-true (equalp
+		(idct #(1 1 1 1))
+		#(1.9238795 -0.38268343 0.38268343 0.07612047)))
+
+  (assert-true (equalp
+		(dct #(-1 -1 -1 -1))
+		#(-2.0 -7.850462e-17 7.850462e-17 1.5700924e-16)))  ;; should be [ 2.,  0.,  0.,  0.]?
+
+  (assert-true (equalp
+		(idct #(-1 -1 -1 -1))
+		#(-1.9238795 0.38268343 -0.38268343 -0.07612047)))
+
+  (assert-true (equalp
+		(dct #(2))
+		#(2.0)))
+
+  (assert-true (equalp
+		(idct #(2))
+		#(2.0)))
+
+  (assert-true (equalp
+		(dct #(2000000000000000000000 20000000000000000000000000000000  40000000000000000000000000000000000000))
+		#(2.3094023e37 -2.8284271e37 1.6329916e37))))
