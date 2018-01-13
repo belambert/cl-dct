@@ -4,7 +4,7 @@ cl-dct
 [![Coverage Status](https://coveralls.io/repos/github/belambert/cl-dct/badge.svg?branch=master)](https://coveralls.io/github/belambert/cl-dct?branch=master)
 
 [Discrete cosine transform (DCT)](https://en.wikipedia.org/wiki/Discrete_cosine_transform) 
-is a signal processing algorithm, that compresses a signal.  It's
+is a signal processing algorithm that compresses a signal.  It's
 similar to a Fourier transform. DCT is often used in speech recognition for
 computing MFCC features.
 
@@ -23,6 +23,6 @@ and the scipy command:
 scipy.fftpack.idct([4., 3., 5., 10.], norm='ortho')
 ```
 
-This is an O(n^2^ ) implementation. O(n log(n))
-[implementations](https://www.nayuki.io/page/fast-discrete-cosine-transform-algorithms)
+This is an O(n²) implementation. [O(n log(n))
+implementations](https://www.nayuki.io/page/fast-discrete-cosine-transform-algorithms)
 are also possible.
