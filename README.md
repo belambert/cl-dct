@@ -8,7 +8,7 @@ computing MFCC features.
 
 There are a number of different versions and implementations of
 DCT. This implementation mimics the one in Matlab. You should also get
-the same results in scipy with the command:
+the same results in [scipy](https://www.scipy.org/) with the command:
 
 ```python
 scipy.fftpack.dct([4., 3., 5., 10.], norm='ortho')
@@ -20,3 +20,7 @@ and the scipy command:
 ```python
 scipy.fftpack.idct([4., 3., 5., 10.], norm='ortho')
 ```
+
+This is an O(n^2^) implementation. O(n log(n))
+[implementations](https://www.nayuki.io/page/fast-discrete-cosine-transform-algorithms)
+are also possible.
