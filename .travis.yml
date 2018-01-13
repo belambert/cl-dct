@@ -1,0 +1,26 @@
+language: common-lisp
+sudo: required
+
+env:
+  global:
+    - TEST_FORM="(unless (lisp-unit:run-tests :all :dct-test) (uiop:quit 1))"
+  matrix:
+    # The full set used by quicklisp is:
+    - "LISP=sbcl COVERALLS=true"
+    - LISP=sbcl
+    - LISP=abcl
+    - LISP=ccl
+    - LISP=clisp
+    - LISP=allegro
+    - LISP=cmucl
+    - LISP=sbcl32
+    - LISP=ccl32
+    - LISP=clisp32
+
+install:
+  - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
+
+script:
+   - if [[ "$COVERALLS" == "true" ]]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls; fi
+   - if [[ "$COVERALLS" == "true" ]]; then cl -l dct-test -e "(coveralls:with-coveralls (:exclude (list \"t\")) $TEST_FORM )"; fi
+   - if [[ "$COVERALLS" -ne "true" ]]; then cl -l dct-test -l dct -e "$TEST_FORM"; fi

@@ -12,10 +12,9 @@
     :serial t
     :components
     ((:file "test"))))
-  :depends-on ("dct"
-	       "lisp-unit"
+  :depends-on (:dct
+	       :lisp-unit
 	       ;; cl-coverage is failing without these
-	       ;; "trivial-features"
-	       ;; "babel"
-	       ;; "cl-coveralls"
-	       ))
+	       :cl-coveralls
+	       :trivial-features
+	       :babel))
