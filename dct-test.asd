@@ -14,7 +14,7 @@
     ((:file "test"))))
   :depends-on (:dct
 	       :lisp-unit
-	       ;; cl-coverage is failing without these
-	       :cl-coveralls
+	       ;; cl-coverage fails without explicitly loading these
 	       :trivial-features
-	       :babel))
+	       :babel
+	       :cl-coveralls))

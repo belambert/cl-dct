@@ -1,6 +1,9 @@
 cl-dct
 ======
 
+
+[![Coverage Status](https://coveralls.io/repos/github/belambert/cl-dct/badge.svg?branch=master)](https://coveralls.io/github/belambert/cl-dct?branch=master)
+
 [Discrete cosine transform (DCT)](https://en.wikipedia.org/wiki/Discrete_cosine_transform) 
 is a signal processing algorithm, that compresses a signal.  It's
 similar to a Fourier transform. DCT is often used in speech recognition for
