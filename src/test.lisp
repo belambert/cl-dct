@@ -22,7 +22,7 @@
         :lisp-unit)
   (:export :run))
 
-(in-package :edit-distance-tests)
+(in-package :dct-test)
 
 ;; (define-test test-distance-fast
 ;;     (let ((result (distance '(1 2 3) '(1 2 4))))
