@@ -5,17 +5,12 @@ env:
   global:
     - TEST_FORM="(unless (lisp-unit:run-tests :all :dct-test) (uiop:quit 1))"
   matrix:
-    # The full set used by quicklisp is:
     - "LISP=sbcl COVERALLS=true"
     - LISP=sbcl
     - LISP=abcl
     - LISP=ccl
     - LISP=clisp
-    - LISP=allegro
     - LISP=cmucl
-    - LISP=sbcl32
-    - LISP=ccl32
-    - LISP=clisp32
 
 install:
   - curl -L https://github.com/luismbo/cl-travis/raw/master/install.sh | sh
