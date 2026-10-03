@@ -19,7 +19,7 @@
    DCT-II taken from:
    http://en.wikipedia.org/wiki/Discrete_cosine_transform#DCT-II
    Further multiplied the X0 term by 1/√2 and multiply the resulting matrix by an overall scale factor of √(2/N)  ...(?)"
-  (declare (sb-ext:muffle-conditions sb-ext:compiler-note))
+  #+sbcl (declare (sb-ext:muffle-conditions sb-ext:compiler-note))
   (alexandria:coercef array 'vector)
   (let* ((N (length array))
 	 (transformed (make-array N :element-type 'single-float :initial-element 0.0)))
