@@ -1,7 +1,6 @@
 cl-dct
 ======
-[![Build Status](https://travis-ci.org/belambert/cl-dct.svg?branch=main)](https://travis-ci.org/belambert/cl-dct)
-[![Coverage Status](https://coveralls.io/repos/github/belambert/cl-dct/badge.svg?branch=main)](https://coveralls.io/github/belambert/cl-dct?branch=main)
+[![test](https://github.com/belambert/cl-dct/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/belambert/cl-dct/actions/workflows/test.yml)
 
 [Discrete cosine transform (DCT)](https://en.wikipedia.org/wiki/Discrete_cosine_transform) 
 is a signal processing algorithm that compresses a signal.  It's
