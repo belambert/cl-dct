@@ -74,3 +74,9 @@ Compares relative to magnitude so large values aren't held to absolute error."
   (assert-true (equalp
 		(dct #(2000000000000000000000 20000000000000000000000000000000  40000000000000000000000000000000000000))
 		#(2.3094023e37 -2.8284271e37 1.6329916e37))))
+
+
+(define-test test-dct-truncated
+  (assert-true (equalp (dct #(4 3 5 10) :truncated 2) #(11.0 -4.460885)))
+  (assert-true (equalp (dct #(4 3 5 10) :truncated 4) (dct #(4 3 5 10))))
+  (assert-error 'error (dct #(4 3 5 10) :truncated 5)))
