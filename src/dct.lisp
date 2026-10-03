@@ -15,15 +15,17 @@
 (in-package :dct)
 
 (defun dct (array &key truncated)
-  "Discrete cosine transform (DCT). 
+  "Discrete cosine transform (DCT). With :truncated, returns only the first that many coefficients.
    DCT-II taken from:
    http://en.wikipedia.org/wiki/Discrete_cosine_transform#DCT-II
    Further multiplied the X0 term by 1/√2 and multiply the resulting matrix by an overall scale factor of √(2/N)  ...(?)"
   (declare (sb-ext:muffle-conditions sb-ext:compiler-note))
   (alexandria:coercef array 'vector)
+  (assert (<= (or truncated 0) (length array)) (truncated) ":truncated ~a exceeds input length ~a" truncated (length array))
   (let* ((N (length array))
-	 (transformed (make-array N :element-type 'single-float :initial-element 0.0)))
-    (dotimes (k (if truncated truncated N)) ;; only run this loop 'truncated' times if we're going to truncate the result anyway.
+	 (n-out (or truncated N))
+	 (transformed (make-array n-out :element-type 'single-float :initial-element 0.0)))
+    (dotimes (k n-out)
       (let ((X_k 0.0)
 	    ;; The 'norm' relation is largely(?) due to this scaling factor?
 	    (w_k (if (= k 0)
