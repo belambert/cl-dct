@@ -23,6 +23,12 @@
 
 (in-package :dct-test)
 
+(defun close-p (a b &optional (tol 1e-5))
+  "True if sequences A and B have the same length and match within TOL.
+Compares relative to magnitude so large values aren't held to absolute error."
+  (and (= (length a) (length b))
+       (every (lambda (x y) (<= (abs (- x y)) (* tol (max 1 (abs x) (abs y))))) a b)))
+
 (define-test test-dct-basic
 
   (assert-true (equalp
@@ -41,17 +47,17 @@
 		(idct #(0 0 0 0))
 		#(0 0 0 0)))
 
-  (assert-true (equalp
+  (assert-true (close-p
 		(dct #(1 1 1 1))
-		#(2.0 7.850462e-17 -7.850462e-17 -1.5700924e-16)))  ;; should be [ 2.,  0.,  0.,  0.]?
+		#(2 0 0 0)))
 
   (assert-true (equalp
 		(idct #(1 1 1 1))
 		#(1.9238795 -0.38268343 0.38268343 0.07612047)))
 
-  (assert-true (equalp
+  (assert-true (close-p
 		(dct #(-1 -1 -1 -1))
-		#(-2.0 -7.850462e-17 7.850462e-17 1.5700924e-16)))  ;; should be [ 2.,  0.,  0.,  0.]?
+		#(-2 0 0 0)))
 
   (assert-true (equalp
 		(idct #(-1 -1 -1 -1))
