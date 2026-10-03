@@ -18,4 +18,4 @@ install:
 script:
    - if [[ "$COVERALLS" == "true" ]]; then git clone https://github.com/fukamachi/cl-coveralls ~/lisp/cl-coveralls; fi
    - if [[ "$COVERALLS" == "true" ]]; then cl -l dct-test -e "(coveralls:with-coveralls (:exclude (list \"t\")) $TEST_FORM )"; fi
-   - if [[ "$COVERALLS" -ne "true" ]]; then cl -l dct-test -l dct -e "$TEST_FORM"; fi
+   - if [[ "$COVERALLS" != "true" ]]; then cl -l dct-test -l dct -e "$TEST_FORM"; fi
