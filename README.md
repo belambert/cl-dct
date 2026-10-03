@@ -25,3 +25,9 @@ scipy.fftpack.idct([4., 3., 5., 10.], norm='ortho')
 This is an O(n²) implementation. [O(n log(n))
 implementations](https://www.nayuki.io/page/fast-discrete-cosine-transform-algorithms)
 are also possible.
+
+## Testing
+
+Tests use [lisp-unit](https://github.com/OdonataResearchLLC/lisp-unit) and run via ASDF:
+
+    (asdf:test-system :dct)

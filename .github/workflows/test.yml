@@ -21,6 +21,5 @@ jobs:
         run: |
           sbcl --non-interactive --load ~/quicklisp/setup.lisp \
             --eval '(push (truename ".") asdf:*central-registry*)' \
-            --eval '(ql:quickload (list :dct :lisp-unit))' \
-            --load src/test.lisp \
-            --eval '(let ((r (lisp-unit:run-tests :all :dct-test))) (uiop:quit (if (or (lisp-unit:failed-tests r) (lisp-unit:error-tests r)) 1 0)))'
+            --eval '(ql:quickload :dct-test)' \
+            --eval '(asdf:test-system :dct)'

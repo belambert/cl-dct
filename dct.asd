@@ -13,4 +13,5 @@
     :components
     ((:file "package")
      (:file "dct"))))
-  :depends-on (:alexandria))
+  :depends-on (:alexandria)
+  :in-order-to ((test-op (test-op "dct-test"))))
