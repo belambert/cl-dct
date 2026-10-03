@@ -12,9 +12,9 @@
     :serial t
     :components
     ((:file "test"))))
-  :depends-on (:dct
-	       :lisp-unit
-	       ;; cl-coverage fails without explicitly loading these
-	       :trivial-features
-	       :babel
-	       :cl-coveralls))
+  :depends-on (:dct :lisp-unit)
+  :perform (test-op (op c)
+             (let ((r (uiop:symbol-call :lisp-unit :run-tests :all :dct-test)))
+               (when (or (uiop:symbol-call :lisp-unit :failed-tests r)
+                         (uiop:symbol-call :lisp-unit :error-tests r))
+                 (error "Tests failed.")))))

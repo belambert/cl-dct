@@ -12,7 +12,7 @@
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
 
-;; To run these tests: (lisp-unit:run-tests :all :dct-test)
+;; To run these tests: (asdf:test-system :dct)
 
 (defpackage :dct-test
   (:use :common-lisp
